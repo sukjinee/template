@@ -12,7 +12,7 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
 
 <!-- requireJS -->
-<script data-main="/js/cms/main.js" src="/js/cms/require.js"></script>
+<script data-main="/js/cms/app.js" src="/js/cms/core/require.js"></script>
 
 </head>
 
