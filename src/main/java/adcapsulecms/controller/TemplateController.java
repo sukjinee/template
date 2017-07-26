@@ -74,6 +74,7 @@ public class TemplateController {
 	public String list (Model model) throws IOException {
 
 		List result = templateService.selectPriviewList();
+		System.out.println("1123");
 		model.addAttribute("list", result);
 		return path + "/list";
 	}
