@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Template sample</title>
+
+    <!-- css -->
+    <link href="/css/animate.css" rel="stylesheet"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+    <link href="/css/toastr.min.css" rel="stylesheet"/>
+
+    <!-- requireJS -->
+    <script data-main="/js/cms/app.js" src="/js/cms/core/require.js"></script>
+</head>
+
+<body>
+<h1>템플릿 리스트</h1>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" th:each="item, status : ${list}" th:if="${status.index % 3 == 0}">
+        <div class="col-md-3"
+             th:each="item2, status2 : ${list}"
+             th:if="${status2.index ge status.index and status2.index lt status.index + 3}">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+
+                    <div class="product-imitation" th:text="${'템플릿 샘플' + item2.key}">
+                        블라블라
+                    </div>
+                    <div class="product-desc">
+                        <small class="text-muted" th:text="${'템플릿 샘플 ' + item2.key}">템플릿 샘플</small>
+                        <div class="small m-t-xs">
+                            템플릿 목록 샘플
+                        </div>
+                        <div class="m-t text-righ">
+
+                            <a th:attr="href=${'/template/' + item2.key} + '/edit'"
+                               class="btn btn-xs btn-outline btn-primary">
+                                상세 <i class="fa fa-long-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" th:remove="all">
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div class="product-imitation">
+                        블라블라
+                    </div>
+                    <div class="product-desc">
+                        <small class="text-muted">템플릿 샘플</small>
+                        <div class="small m-t-xs">
+                            템플릿 목록 샘플
+                        </div>
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary">
+                                상세 <i class="fa fa-long-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" th:if="${#lists.isEmpty(list)}">
+        아무것도 없음.
+    </div>
+</div>
+
+<paging th:newAttr="">
+
+</paging>
+페이징 영역
+
+</body>
+</html>
